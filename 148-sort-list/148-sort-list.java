@@ -41,26 +41,39 @@ class Solution {
     {    
         if(left==null)return right;
         else if(right==null)return left;
+          ListNode res=null;
+          ListNode dummy=res;
         
-        ListNode dummy = new ListNode(-1);
-        ListNode res = dummy;
         
         while(left != null && right != null)
         {
             if(left.val <= right.val)
             {
-                dummy.next = left;
-                dummy = left;
+                if(res==null)
+                { res= left;
+                  dummy=res;
+                 }
+                else 
+                {
+                    dummy.next = left;
+                   dummy=dummy.next;
+                }
                left=left.next;
             }
             else 
             {
-                dummy.next = right;
-                dummy = right;
+               if(res==null)
+                { res= right;
+                  dummy=res;
+                 }
+               else{
+                   dummy.next = right;
+                   dummy=dummy.next;
+               }
                right=right.next;
             }
         }
         dummy.next=(left==null)?right:left;
-        return res.next;
+        return res;
     }
 }
