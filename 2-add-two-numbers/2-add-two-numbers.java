@@ -17,21 +17,21 @@ class Solution {
         int len2=len(l2);
      
         
-       if(len1>len2)
-        {
-            int diff=len1-len2;
-            append(l2,diff);
+//        if(len1>len2)
+//         {
+//             int diff=len1-len2;
+//             append(l2,diff);
             
             
-        }
-        else if(len2>len1)
-        {
-            int diff=len2-len1;
-           append(l1,diff);
+//         }
+//         else if(len2>len1)
+//         {
+//             int diff=len2-len1;
+//            append(l1,diff);
             
            
             
-       }
+//        }
         
         ListNode rl1=l1;
         ListNode rl2=l2;
@@ -107,29 +107,29 @@ class Solution {
         }
         return prev;
     }
-   public void append(ListNode l,int diff)
-   {
-       ListNode t=l;
-             while(t.next!=null)
-          {
-           t=t.next;
-            }
-            while(diff>0)
-            {
-              t.next=new ListNode(0);
-            t=t.next;
-                diff--;
-           }
+   // public void append(ListNode l,int diff)
+//    {
+//        ListNode t=l;
+//              while(t.next!=null)
+//           {
+//            t=t.next;
+//             }
+//             while(diff>0)
+//             {
+//               t.next=new ListNode(0);
+//             t=t.next;
+//                 diff--;
+//            }
         
-    }
-    public void print(ListNode head)
-    {
-        ListNode h=head;
-        while(h!=null)
-        {
-            System.out.print(h.val);
-            h=h.next;
-        }
-        System.out.println(" ");
-    }
+//     }
+//     public void print(ListNode head)
+//     {
+//         ListNode h=head;
+//         while(h!=null)
+//         {
+//             System.out.print(h.val);
+//             h=h.next;
+//         }
+//         System.out.println(" ");
+//     }
 }
