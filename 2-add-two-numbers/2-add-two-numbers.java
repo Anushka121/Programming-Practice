@@ -13,26 +13,7 @@ class Solution {
     {
        if(l1==null)return l2;
        if(l2==null)return l1;
-        int len1=len(l1);
-        int len2=len(l2);
-     
-        
-//        if(len1>len2)
-//         {
-//             int diff=len1-len2;
-//             append(l2,diff);
-            
-            
-//         }
-//         else if(len2>len1)
-//         {
-//             int diff=len2-len1;
-//            append(l1,diff);
-            
-           
-            
-//        }
-        
+       
         ListNode rl1=l1;
         ListNode rl2=l2;
        
@@ -40,9 +21,6 @@ class Solution {
         ListNode o=add;
         int sum=0;
         int carry=0;
-        
-        //print(rl1);
-        //print(rl2);
           
         while(rl1!=null&&rl2!=null)
         {
@@ -56,7 +34,6 @@ class Solution {
                 rl2=rl2.next;
             
         }
-      
           while(rl1!=null)
           {
               sum=rl1.val+carry;
@@ -75,23 +52,14 @@ class Solution {
               rl2=rl2.next;
           }
 
-       if(carry!=0)
-           o.next=new ListNode(carry);
-        return add.next;
+           if(carry!=0)
+               o.next=new ListNode(carry);
+            return add.next;
         
     }
     
-    public int len(ListNode l)
-    {  ListNode t=l;
-        int count=0;
-        while(t!=null)
-        {
-            count++;
-            t=t.next;
-           
-        }
-     return count;
-    }
+   
+
     public ListNode reverse(ListNode head)
     {
         ListNode current=head;
@@ -107,29 +75,5 @@ class Solution {
         }
         return prev;
     }
-   // public void append(ListNode l,int diff)
-//    {
-//        ListNode t=l;
-//              while(t.next!=null)
-//           {
-//            t=t.next;
-//             }
-//             while(diff>0)
-//             {
-//               t.next=new ListNode(0);
-//             t=t.next;
-//                 diff--;
-//            }
-        
-//     }
-//     public void print(ListNode head)
-//     {
-//         ListNode h=head;
-//         while(h!=null)
-//         {
-//             System.out.print(h.val);
-//             h=h.next;
-//         }
-//         System.out.println(" ");
-//     }
+
 }
