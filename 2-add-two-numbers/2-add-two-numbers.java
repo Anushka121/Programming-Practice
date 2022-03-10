@@ -33,8 +33,8 @@ class Solution {
             
        }
         
-        ListNode rl1=reverse(reverse(l1));
-        ListNode rl2=reverse(reverse(l2));
+        ListNode rl1=l1;
+        ListNode rl2=l2;
        
         ListNode add= new ListNode(0);
         ListNode o=add;
