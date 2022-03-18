@@ -25,20 +25,17 @@ class Solution {
                         }
 
                     }
-                    //to check incase duplicate get pushed from the above else;
-                    
-                        st.push(c);
-
-
+                    st.push(c);
                 }
 
             } else {
-
+                //decrease the count not required
                 map.put(c, map.get(c) - 1);
 
 
             }
         }
+        // for string as ouput
         String result = "";
         //System.out.println(map);
         for (int i = 0; i < st.size(); i++) {
