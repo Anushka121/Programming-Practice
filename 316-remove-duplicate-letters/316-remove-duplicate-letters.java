@@ -20,13 +20,13 @@ class Solution {
                             st.pop();
 
                         } else {
-                            st.push(c);
+                            
                             break;
                         }
 
                     }
                     //to check incase duplicate get pushed from the above else;
-                    if (!st.contains(c))
+                    
                         st.push(c);
 
 
