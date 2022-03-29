@@ -1,13 +1,31 @@
 class Solution {
     public int findDuplicate(int[] nums)
     {
-        int prev=-1;
-        Arrays.sort(nums);
-        for(int val:nums)
+        int low=1;
+        int  high=nums.length;
+        int duplicate=-1;
+        
+        while(low<=high)
         {
-            if(prev==val)return val;
-            prev=val;
+           int mid=low+(high-low)/2;
+            int count=0;
+           // System.out.println(nums[mid]);
+            for(int val:nums)
+            {
+                if(val<=mid)
+                {
+                    count++;
+                }
+            }
+            if(count>mid)
+            {
+                duplicate=mid;
+                high=mid-1;
+            }
+            else
+                low=mid+1;
         }
-        return prev;
+        
+        return duplicate;
     }
 }
