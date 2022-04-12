@@ -26,8 +26,9 @@ class Solution {
                  l.add(nums[s]);
                  l.add(nums[e]);
                  result.add(l);
+                 //ignore duplicate
                 while(s<e &&nums[s]==nums[s+1]) s++;
-                //duplicate  c
+                
                 while(s<e &&nums[e]==nums[s-1]) e--;
                 s++;
                 e--;
