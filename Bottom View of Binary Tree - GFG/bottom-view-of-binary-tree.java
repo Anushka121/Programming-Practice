@@ -141,10 +141,8 @@ class Solution
             Pair p =q.remove();
             int l=p.l;
             Node tempNode=p.data;
-            map.putIfAbsent(l,p.data.data);
-            //
-            
             map.put(l,p.data.data);
+            
             
             if(p.data.left!=null)
             {
