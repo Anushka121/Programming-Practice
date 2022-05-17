@@ -14,15 +14,24 @@ class Node {
 */
 
 class Solution {
-
-    Map<Node,Node> map = new HashMap<>();
-	
-    public Node copyRandomList(Node head) {
-        if(head == null) return null;
-        Node temp = new Node(head.val);
-        map.put(head,temp);
-        temp.next = copyRandomList(head.next);
-        temp.random = map.get(head.random);
-        return temp;
-    }
+    public Node copyRandomList(Node head)
+    {
+        LinkedHashMap<Node, Node> hn= new LinkedHashMap<>();
+        Node p= head;
+        //to store in the map
+        while(p!=null)
+        {
+            hn.put(p, new Node(p.val));
+            p=p.next;
+        }
+       
+        Node node = head;
+       while (node != null) {
+        hn.get(node).next = hn.get(node.next);
+        hn.get(node).random = hn.get(node.random);
+        node = node.next;
+      }
+  
+  return hn.get(head);
+}
 }
