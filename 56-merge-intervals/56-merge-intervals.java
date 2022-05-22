@@ -1,53 +1,49 @@
-
-class Solution {
-    public int[][] merge(int[][] interval) 
+class Pair
+{
+    int x;
+    int y;
+    Pair(int x,int y)
     {
-        Arrays.sort(interval,new Comparator<int[]>(){
-        @Override 
-        public int compare(int[] first,int[] second)
+        this.x=x;
+        this.y=y;
+    }
+}
+class Solution {
+    public int[][] merge(int[][] intervals) 
+    {
+       if(intervals.length<=1)return intervals;
+        Arrays.sort(intervals,(a,b)->a[0]-b[0]);
+        Stack<Pair> stack= new Stack<>();
+        for(int [] interval:intervals)
         {
-            if(first[0]>second[0])
+            Pair p= new Pair(interval[0],interval[1]);
+            if(stack.isEmpty())
             {
-                return 1;
-            }
-            else if(first[0]==second[0])
-                return 0;
-                else return -1;
-        }
-        });
-        
-        Stack<int[]> st= new Stack<>();
-       for(int i=0;i<interval.length;i++)
-        {
-            if(i==0)
-            {
-                st.push(interval[i]);
+                stack.push(p);
             }
             else
             {
-                if(st.peek()[1]>=interval[i][0])
+                Pair p1= stack.peek();
+                if(p1.y>=p.x)
                 {
-                    st.peek()[1]=Math.max(interval[i][1],st.peek()[1]);
+                    stack.pop();
+                    stack.push(new Pair(p1.x,Math.max(p1.y,p.y)));
                 }
-               else st.push(interval[i]);
-                
+                else
+                {
+                    stack.push(p);
+                }
             }
+            
         }
-        Stack<int[]> rs=new Stack<>();
-        
-        while(st.isEmpty()!=true)
+        int[][] result= new int[stack.size()][2];
+        for(int i=0;i<stack.size();i++)
         {
-          rs.push(st.pop());
+              Pair p= stack.get(i);
+              result[i][0]=p.x;
+              result[i][1]=p.y;
+              
         }
-        
-        int result[][]=new int[rs.size()][2];
-        for(int i=0;i<result.length;i++)
-        {
-           result[i][0]=rs.peek()[0];
-           result[i][1]=rs.peek()[1];
-           rs.pop();
-        }
-        
         return result;
     }
 }
