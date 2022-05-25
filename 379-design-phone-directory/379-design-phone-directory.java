@@ -1,31 +1,51 @@
 class PhoneDirectory {
-    private boolean[] phones;
-    private Queue<Integer> releasedQueue;
-    private int pointer;
-    public PhoneDirectory(int maxNumbers) {
-        phones = new boolean[maxNumbers];
-        releasedQueue = new LinkedList<>();
-        pointer = 0;
-    }
+    boolean[] assigned;
+    Queue<Integer> q;
     
-    public int get() {
-        if (pointer < phones.length) {
-            phones[pointer] = true;
-            pointer++;
-            return pointer - 1;
+
+    public PhoneDirectory(int maxNumbers) 
+    {
+        assigned= new boolean[maxNumbers];
+        q=new LinkedList<>();
+        for(int i=0;i<maxNumbers;i++)
+        {
+            q.add(i);
+          
         }
-        if (releasedQueue.isEmpty()) return -1;
-        int num = releasedQueue.poll();
-        phones[num] = true;
-        return num;
+        
     }
     
-    public boolean check(int number) {
-        return !phones[number];
+    public int get()
+    {   
+      if(q.isEmpty())return -1;
+        else
+        { 
+            int num=q.poll();
+            assigned[num]=true;
+            return num;
+        }
     }
     
-    public void release(int number) {
-        if (phones[number]) releasedQueue.offer(number);
-        phones[number] = false;
+    public boolean check(int number)
+    {
+       if(assigned[number]==false)return true;
+        else return false;
+    }
+    
+    public void release(int number) 
+    {
+       
+        if(assigned[number])
+        q.add(number);
+        assigned[number]=false;
+        
     }
 }
+
+/**
+ * Your PhoneDirectory object will be instantiated and called as such:
+ * PhoneDirectory obj = new PhoneDirectory(maxNumbers);
+ * int param_1 = obj.get();
+ * boolean param_2 = obj.check(number);
+ * obj.release(number);
+ */
