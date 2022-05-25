@@ -28,8 +28,8 @@ class PhoneDirectory {
     
     public boolean check(int number)
     {
-       if(assigned[number]==false)return true;
-        else return false;
+       return !assigned[number];
+        
     }
     
     public void release(int number) 
