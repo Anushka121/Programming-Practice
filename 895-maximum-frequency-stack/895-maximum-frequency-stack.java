@@ -1,36 +1,55 @@
 class FreqStack {
-    Map<Integer, Integer> map;
-    Map<Integer, Stack<Integer>> freq;
-    int maxfreq;
+    int maxFreq;
+    //freq calculation
+    HashMap<Integer,Integer> map;
+    //fre--> values with stack
+    HashMap<Integer,Stack<Integer>> st;
     
-    //constructor 
-    public FreqStack() {
-        map = new HashMap<>();
-        freq = new HashMap<>();
-        maxfreq = 0;
+    
+    
+    public FreqStack() 
+    {
+     map= new HashMap<Integer,Integer>();
+     st= new HashMap<Integer,Stack<Integer>>();
+     maxFreq=0;
     }
-    //1. Incrementing value in frequency map and its count
-    //2. updating maxfreq
-    //3. adding value in stack with frequency
-    public void push(int x) {
-        int Freq = map.getOrDefault(x,0)+1;
-        map.put(x, Freq);
-        if(Freq>maxfreq){
-            maxfreq=Freq;
+    
+    public void push(int val) 
+    {
+        if(map.containsKey(val))
+        {
+            map.put(val,map.get(val)+1);
         }
-        //checking if frquency is already present in freqstack or not otherwise create new stack  of new frequency and add element to that stack.
-        freq.computeIfAbsent(Freq, freqStack-> new Stack<>()).push(x);
-    }
-    //1. return and remove top element of maxfreq
-    //2. update the maxfreq(decrementing)
-    //3. updating count in frequency map
-    public int pop() {
-        Stack<Integer> st = freq.get(maxfreq);
-        int top = st.pop();
-        if(st.isEmpty()){
-            maxfreq--;
+        else
+        {
+            map.put(val,1);
         }
-        map.put(top, map.get(top)-1);
-        return top;
+        if(maxFreq<map.get(val))
+        {
+            maxFreq= map.get(val);
+            st.put(maxFreq,new Stack<Integer>());
+        }
+        
+        st.get(map.get(val)).push(val);
+      
     }
+    
+    public int pop() 
+    {
+         int val=st.get(maxFreq).pop();
+         map.put(val,map.get(val)-1);
+        
+        if(st.get(maxFreq).size()==0)
+            maxFreq--;
+        
+        return val;
+    }
+  
 }
+
+/**
+ * Your FreqStack object will be instantiated and called as such:
+ * FreqStack obj = new FreqStack();
+ * obj.push(val);
+ * int param_2 = obj.pop();
+ */
