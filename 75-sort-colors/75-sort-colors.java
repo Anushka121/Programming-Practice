@@ -1,37 +1,32 @@
 class Solution {
     public void sortColors(int[] nums)
     {
-        //Dutch National Algo
-        
-        int l=0;
-        int m=0;
-        int h=nums.length-1;
-        
-        while(m<=h)
+        int low=0;
+        int high=nums.length-1;
+        int mid=0;
+        while(mid<=high)
         {
-            if(nums[m]==0)
+           
+            if(nums[mid]==0)
             {
-                swap(l,m,nums);
-                m++;
-                l++;
+                int temp=nums[mid];
+                nums[mid++]=nums[low];
+                nums[low++]=temp;
+                
             }
-            else if(nums[m]==1)
+            
+            else if(nums[mid]==1)
             {
-                m++;
+                mid++;
             }
-            else if(nums[m]==2)
+            
+           else  if(nums[mid]==2)
             {
-              swap(m,h,nums);
-              //m++;
-              h--;
-            }      
+                int temp=nums[mid];
+                nums[mid]=nums[high];
+                nums[high]=temp;
+                high--;
+            }
         }
-    }
-    
-    public void swap(int x,int y,int[] nums)
-    {
-        int temp=nums[x];
-        nums[x]=nums[y];
-        nums[y]=temp;
     }
 }
