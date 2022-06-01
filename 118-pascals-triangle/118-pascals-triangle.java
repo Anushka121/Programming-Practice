@@ -5,7 +5,7 @@ class Solution {
         List<Integer> current= null;
         List<Integer> prev= null;
        
-        for(int i=0;i<numRows;++i)
+        for(int i=0;i<numRows;i++)
         {
            current= new ArrayList<Integer>();
             for(int j=0;j<=i;++j)
