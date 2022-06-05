@@ -12,15 +12,16 @@ class Cache{
 class LRUCache {
     HashMap<Integer,Cache> map;
     int capacity;
-        Cache head= new Cache(0,0);
-        Cache tail= new Cache(0,0);
+        Cache head;//= new Cache(0,0);
+        Cache tail;//= new Cache(0,0);
         
     public LRUCache(int capacity) 
     {
         map= new HashMap<>();
         this.capacity=capacity;
         //Initail Confguartion
-         
+         head=new Cache(0,0);
+         tail=new Cache(0,0);
         head.next=tail;
         tail.prev=head;
         
